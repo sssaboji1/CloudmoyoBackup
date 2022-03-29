@@ -1,0 +1,2 @@
+D:\Sush\Sushant\STUDY\Code\Csharp Code\Csharp Code\obj\Release\Csharp Code.csproj.AssemblyReference.cache
+D:\Sush\Sushant\STUDY\Code\Csharp Code\Csharp Code\obj\Release\Csharp Code.csproj.CoreCompileInputs.cache

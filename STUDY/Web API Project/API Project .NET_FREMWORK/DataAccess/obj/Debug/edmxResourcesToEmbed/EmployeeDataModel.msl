@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Employee_CRUDEntities">
+    <EntitySetMapping Name="DepartmentMasters">
+      <EntityTypeMapping TypeName="Model.DepartmentMaster">
+        <MappingFragment StoreEntitySet="DepartmentMaster">
+          <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+          <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeMasters">
+      <EntityTypeMapping TypeName="Model.EmployeeMaster">
+        <MappingFragment StoreEntitySet="EmployeeMaster">
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+          <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeShiftRelationships">
+      <EntityTypeMapping TypeName="Model.EmployeeShiftRelationship">
+        <MappingFragment StoreEntitySet="EmployeeShiftRelationship">
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShiftMasters">
+      <EntityTypeMapping TypeName="Model.ShiftMaster">
+        <MappingFragment StoreEntitySet="ShiftMaster">
+          <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+          <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ShiftEndTime" ColumnName="ShiftEndTime" />
+          <ScalarProperty Name="ShiftStartTime" ColumnName="ShiftStartTime" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

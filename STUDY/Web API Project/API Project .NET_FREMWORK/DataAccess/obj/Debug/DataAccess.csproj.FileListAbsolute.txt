@@ -1,0 +1,12 @@
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\bin\Debug\DataAccess.dll
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\bin\Debug\DataAccess.pdb
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\obj\Debug\DataAccess.dll
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\obj\Debug\DataAccess.pdb
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\bin\Debug\DataAccess.dll.config
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\bin\Debug\EntityFramework.dll
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\bin\Debug\EntityFramework.xml
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+D:\Sush\Sushant\STUDY\Web API Project\API Project .NET_FREMWORK\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache

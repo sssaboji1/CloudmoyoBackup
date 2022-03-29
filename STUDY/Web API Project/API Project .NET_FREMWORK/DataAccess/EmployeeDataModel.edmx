@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DepartmentMaster">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Modifieddate" Type="datetime" />
+          <Property Name="Isactive" Type="bit" />
+        </EntityType>
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="255" />
+          <Property Name="FirstName" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Modifieddate" Type="datetime" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="Salary" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="EmployeeShiftRelationship">
+          <Key>
+            <PropertyRef Name="RelationshipID" />
+          </Key>
+          <Property Name="RelationshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="ShiftID" Type="int" />
+        </EntityType>
+        <EntityType Name="ShiftMaster">
+          <Key>
+            <PropertyRef Name="ShiftID" />
+          </Key>
+          <Property Name="ShiftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShiftName" Type="varchar" MaxLength="255" />
+          <Property Name="ShiftStartTime" Type="varchar" MaxLength="255" />
+          <Property Name="ShiftEndTime" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Modifieddate" Type="datetime" />
+          <Property Name="Isactive" Type="bit" />
+        </EntityType>
+        <Association Name="FK__EmployeeM__Depar__2B3F6F97">
+          <End Role="DepartmentMaster" Type="Self.DepartmentMaster" Multiplicity="0..1" />
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentMaster">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeS__Emplo__300424B4">
+          <End Role="EmployeeMaster" Type="Self.EmployeeMaster" Multiplicity="0..1" />
+          <End Role="EmployeeShiftRelationship" Type="Self.EmployeeShiftRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeMaster">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeShiftRelationship">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeS__Shift__30F848ED">
+          <End Role="ShiftMaster" Type="Self.ShiftMaster" Multiplicity="0..1" />
+          <End Role="EmployeeShiftRelationship" Type="Self.EmployeeShiftRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShiftMaster">
+              <PropertyRef Name="ShiftID" />
+            </Principal>
+            <Dependent Role="EmployeeShiftRelationship">
+              <PropertyRef Name="ShiftID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="DepartmentMaster" EntityType="Self.DepartmentMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeShiftRelationship" EntityType="Self.EmployeeShiftRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShiftMaster" EntityType="Self.ShiftMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EmployeeM__Depar__2B3F6F97" Association="Self.FK__EmployeeM__Depar__2B3F6F97">
+            <End Role="DepartmentMaster" EntitySet="DepartmentMaster" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__Emplo__300424B4" Association="Self.FK__EmployeeS__Emplo__300424B4">
+            <End Role="EmployeeMaster" EntitySet="EmployeeMaster" />
+            <End Role="EmployeeShiftRelationship" EntitySet="EmployeeShiftRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__Shift__30F848ED" Association="Self.FK__EmployeeS__Shift__30F848ED">
+            <End Role="ShiftMaster" EntitySet="ShiftMaster" />
+            <End Role="EmployeeShiftRelationship" EntitySet="EmployeeShiftRelationship" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Employee_CRUDEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="DepartmentMasters" EntityType="Model.DepartmentMaster" />
+          <EntitySet Name="EmployeeMasters" EntityType="Model.EmployeeMaster" />
+          <EntitySet Name="EmployeeShiftRelationships" EntityType="Model.EmployeeShiftRelationship" />
+          <EntitySet Name="ShiftMasters" EntityType="Model.ShiftMaster" />
+          <AssociationSet Name="FK__EmployeeM__Depar__2B3F6F97" Association="Model.FK__EmployeeM__Depar__2B3F6F97">
+            <End Role="DepartmentMaster" EntitySet="DepartmentMasters" />
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__Emplo__300424B4" Association="Model.FK__EmployeeS__Emplo__300424B4">
+            <End Role="EmployeeMaster" EntitySet="EmployeeMasters" />
+            <End Role="EmployeeShiftRelationship" EntitySet="EmployeeShiftRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__Shift__30F848ED" Association="Model.FK__EmployeeS__Shift__30F848ED">
+            <End Role="ShiftMaster" EntitySet="ShiftMasters" />
+            <End Role="EmployeeShiftRelationship" EntitySet="EmployeeShiftRelationships" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DepartmentMaster">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="Isactive" Type="Boolean" />
+          <NavigationProperty Name="EmployeeMasters" Relationship="Model.FK__EmployeeM__Depar__2B3F6F97" FromRole="DepartmentMaster" ToRole="EmployeeMaster" />
+        </EntityType>
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="Salary" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="DepartmentMaster" Relationship="Model.FK__EmployeeM__Depar__2B3F6F97" FromRole="EmployeeMaster" ToRole="DepartmentMaster" />
+          <NavigationProperty Name="EmployeeShiftRelationships" Relationship="Model.FK__EmployeeS__Emplo__300424B4" FromRole="EmployeeMaster" ToRole="EmployeeShiftRelationship" />
+        </EntityType>
+        <EntityType Name="EmployeeShiftRelationship">
+          <Key>
+            <PropertyRef Name="RelationshipID" />
+          </Key>
+          <Property Name="RelationshipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <Property Name="ShiftID" Type="Int32" />
+          <NavigationProperty Name="EmployeeMaster" Relationship="Model.FK__EmployeeS__Emplo__300424B4" FromRole="EmployeeShiftRelationship" ToRole="EmployeeMaster" />
+          <NavigationProperty Name="ShiftMaster" Relationship="Model.FK__EmployeeS__Shift__30F848ED" FromRole="EmployeeShiftRelationship" ToRole="ShiftMaster" />
+        </EntityType>
+        <EntityType Name="ShiftMaster">
+          <Key>
+            <PropertyRef Name="ShiftID" />
+          </Key>
+          <Property Name="ShiftID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShiftStartTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ShiftEndTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="3" />
+          <Property Name="Isactive" Type="Boolean" />
+          <NavigationProperty Name="EmployeeShiftRelationships" Relationship="Model.FK__EmployeeS__Shift__30F848ED" FromRole="ShiftMaster" ToRole="EmployeeShiftRelationship" />
+        </EntityType>
+        <Association Name="FK__EmployeeM__Depar__2B3F6F97">
+          <End Type="Model.DepartmentMaster" Role="DepartmentMaster" Multiplicity="0..1" />
+          <End Type="Model.EmployeeMaster" Role="EmployeeMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentMaster">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="EmployeeMaster">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeS__Emplo__300424B4">
+          <End Type="Model.EmployeeMaster" Role="EmployeeMaster" Multiplicity="0..1" />
+          <End Type="Model.EmployeeShiftRelationship" Role="EmployeeShiftRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeMaster">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="EmployeeShiftRelationship">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeS__Shift__30F848ED">
+          <End Type="Model.ShiftMaster" Role="ShiftMaster" Multiplicity="0..1" />
+          <End Type="Model.EmployeeShiftRelationship" Role="EmployeeShiftRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShiftMaster">
+              <PropertyRef Name="ShiftID" />
+            </Principal>
+            <Dependent Role="EmployeeShiftRelationship">
+              <PropertyRef Name="ShiftID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Employee_CRUDEntities" >
+          <EntitySetMapping Name="DepartmentMasters">
+            <EntityTypeMapping TypeName="Model.DepartmentMaster">
+              <MappingFragment StoreEntitySet="DepartmentMaster">
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeMasters">
+            <EntityTypeMapping TypeName="Model.EmployeeMaster">
+              <MappingFragment StoreEntitySet="EmployeeMaster">
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeShiftRelationships">
+            <EntityTypeMapping TypeName="Model.EmployeeShiftRelationship">
+              <MappingFragment StoreEntitySet="EmployeeShiftRelationship">
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShiftMasters">
+            <EntityTypeMapping TypeName="Model.ShiftMaster">
+              <MappingFragment StoreEntitySet="ShiftMaster">
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ShiftEndTime" ColumnName="ShiftEndTime" />
+                <ScalarProperty Name="ShiftStartTime" ColumnName="ShiftStartTime" />
+                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+                <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
